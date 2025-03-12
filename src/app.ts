@@ -1,13 +1,13 @@
-import express, { json, Request, Response } from "express";
+import express from "express";
+import router from "./routes/routes";
 
+// Função que cria a aplicação
 function createApp() {
   const app = express();
 
+  // Configuração da aplicação
   app.use(express.json());
-
-  app.get("/", (req: Request, res: Response) => {
-    res.status(200).json({ player: "Harry kane" });
-  });
+  app.use("/api", router);
 
   return app;
 }
